@@ -1,0 +1,222 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/HydraMissileExplosion.gd" type="Script" id=1]
+[ext_resource path="res://content/weapons/artillery/artydome_flak_impact_1.png" type="Texture" id=2]
+[ext_resource path="res://content/effects/explosions/smoke32x32px_sheet.png" type="Texture" id=3]
+[ext_resource path="res://content/shared/explosions/explosions-Sheet.png" type="Texture" id=4]
+[ext_resource path="res://content/shared/explosions/explosions-Sheet_shaded.png" type="Texture" id=5]
+[ext_resource path="res://content/keeper/keeper2/CustomStyle_ChangeModulate.gd" type="Script" id=6]
+[ext_resource path="res://content/gadgets/teleporter/teleport_startup_energy.png" type="Texture" id=7]
+
+[sub_resource type="CanvasItemMaterial" id=63]
+particles_animation = true
+particles_anim_h_frames = 10
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id=64]
+_data = [ Vector2( 0, 0.246591 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=62]
+curve = SubResource( 64 )
+
+[sub_resource type="Gradient" id=65]
+offsets = PoolRealArray( 0, 0.281337, 0.62117, 1 )
+colors = PoolColorArray( 0.313726, 1, 0.392157, 1, 0.282353, 0.792157, 0.392157, 1, 0.25098, 0.521569, 0.392157, 1, 0.188235, 0.427451, 0.392157, 0 )
+
+[sub_resource type="GradientTexture" id=56]
+gradient = SubResource( 65 )
+
+[sub_resource type="ParticlesMaterial" id=66]
+lifetime_randomness = 0.8
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+spread = 80.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 90.0
+initial_velocity_random = 0.7
+angular_velocity = 150.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -30.0
+damping = 50.0
+angle = 360.0
+angle_random = 1.0
+scale_random = 0.7
+color_ramp = SubResource( 56 )
+anim_speed = 1.0
+anim_speed_curve = SubResource( 62 )
+anim_offset = 0.5
+anim_offset_random = 1.0
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 64, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 64, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 64, 32 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": false,
+"name": "Impact",
+"speed": 36.0
+} ]
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 104, 199, 104 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 5 )
+region = Rect2( 199, 104, 199, 104 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 5 )
+region = Rect2( 398, 104, 199, 104 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 5 )
+region = Rect2( 597, 104, 199, 104 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 5 )
+region = Rect2( 796, 104, 199, 104 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 5 )
+region = Rect2( 995, 104, 199, 104 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 5 )
+region = Rect2( 1194, 104, 199, 104 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 4 )
+region = Rect2( 1120, 0, 56, 52 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 199, 104 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 5 )
+region = Rect2( 199, 0, 199, 104 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 5 )
+region = Rect2( 398, 0, 199, 104 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 5 )
+region = Rect2( 597, 0, 199, 104 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 5 )
+region = Rect2( 796, 0, 199, 104 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 5 )
+region = Rect2( 995, 0, 199, 104 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 5 )
+region = Rect2( 1194, 0, 199, 104 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 4 )
+region = Rect2( 1120, 0, 56, 52 )
+
+[sub_resource type="SpriteFrames" id=67]
+animations = [ {
+"frames": [ SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 37 ) ],
+"loop": false,
+"name": "Big",
+"speed": 18.0
+}, {
+"frames": [ SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 38 ) ],
+"loop": false,
+"name": "Small",
+"speed": 18.0
+} ]
+
+[sub_resource type="CanvasItemMaterial" id=68]
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id=69]
+_data = [ Vector2( 0, 0.445455 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.990909 ), 1.26061, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=70]
+curve = SubResource( 69 )
+
+[sub_resource type="ParticlesMaterial" id=71]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+scale = 0.5
+scale_random = 0.6
+scale_curve = SubResource( 70 )
+anim_speed = 1.0
+
+[node name="HydraMissileExplosion" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Particles" type="Particles2D" parent="."]
+material = SubResource( 63 )
+emitting = false
+amount = 16
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+process_material = SubResource( 66 )
+texture = ExtResource( 3 )
+
+[node name="BulletImpact" type="AnimatedSprite" parent="."]
+position = Vector2( 2, 0 )
+frames = SubResource( 4 )
+animation = "Impact"
+frame = 2
+playing = true
+offset = Vector2( -26, 0 )
+
+[node name="ExplosionSmall" type="AnimatedSprite" parent="."]
+position = Vector2( -53, 1 )
+rotation = -3.1011
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 67 )
+animation = "Small"
+frame = 7
+playing = true
+
+[node name="StunParticle" type="Particles2D" parent="."]
+modulate = Color( 1, 0.615686, 0.372549, 1 )
+material = SubResource( 68 )
+emitting = false
+amount = 5
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource( 71 )
+texture = ExtResource( 7 )
+script = ExtResource( 6 )
+self_init = true
+styleColor = Color( 0.345098, 1, 0.392157, 1 )
+
+[connection signal="animation_finished" from="BulletImpact" to="." method="_on_BulletImpact_animation_finished"]

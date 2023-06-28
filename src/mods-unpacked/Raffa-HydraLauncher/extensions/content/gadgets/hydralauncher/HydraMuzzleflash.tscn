@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/HydraMuzzleflash.gd" type="Script" id=1]
+[ext_resource path="res://mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/hydralauncher_muzzleflash.png" type="Texture" id=2]
+
+[node name="Muzzleflash" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 22, -6.5 )
+rotation = 1.57079
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Tween" type="Tween" parent="."]

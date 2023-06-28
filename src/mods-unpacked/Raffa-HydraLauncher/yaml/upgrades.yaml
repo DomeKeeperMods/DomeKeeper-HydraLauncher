@@ -1,0 +1,64 @@
+hydraLauncher:
+  limit: [hostile]
+  scene: mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/HydraLauncher.tscn
+  slot: backside
+  distribution: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+  propertyChanges:
+    - hydraLauncher.projectiles = 0/h
+    - hydraLauncher.maxProjectiles = 2
+    - hydraLauncher.rechargeTime = 5.0
+    - hydraLauncher.projectilePerCycle = 1
+    - hydraLauncher.projectileSalvo = 4
+    - hydraLauncher.damage = 8.0
+    - hydraLauncher.autotracking = false/h
+    - hydraLauncher.autotrackingReload = 0.0/h
+    - hydraLauncher.taser = false/h
+hydraLauncherMaxProjectiles1:
+  cost: iron=4, water=2
+  propertyChanges: 
+    - hydraLauncher.maxProjectiles = 3
+  predecessors: [hydraLauncher]
+hydraLauncherMaxProjectiles2:
+  cost: iron=8, water=3
+  propertyChanges: 
+    - hydraLauncher.maxProjectiles = 4
+  predecessors: [hydraLauncherMaxProjectiles1]
+hydraLauncherSalvoSize:
+  cost: iron=18, water=2
+  propertyChanges: 
+    - hydraLauncher.projectileSalvo = 8
+  predecessors: [hydraLauncherMaxProjectiles2]
+hydraLauncherDamage1:
+  cost: iron=4, water=2
+  propertyChanges: 
+    - hydraLauncher.damage = 14.0
+  predecessors: [hydraLauncher]
+hydraLauncherDamage2:
+  cost: iron=8, water=3
+  propertyChanges: 
+    - hydraLauncher.damage = 20.0
+  predecessors: [hydraLauncherDamage1]
+hydraLauncherAutoTracker:
+  cost: iron=12, water=3
+  propertyChanges: 
+    - hydraLauncher.autotrackingReload = 1.4
+    - hydraLauncher.autotracking = true
+    - hydraLauncher.damage = 20.0/h
+  predecessors: [hydraLauncherDamage2]
+  locks: [hydraLauncherTaserWarhead]
+hydraLauncherTaserWarhead:
+  cost: iron=8, water=5
+  propertyChanges:
+    - hydraLauncher.autotrackingReload = 0.0/h
+    - hydraLauncher.taser = true
+    - hydraLauncher.damage = 10.0
+  predecessors: [hydraLauncherDamage2]
+  locks: [hydraLauncherAutoTracker]
+hydraLauncherRecharge:
+  cost: iron=4
+  propertyChanges: 
+    - hydraLauncher.rechargeTime -= 1.2
+  repeatable:
+    - times = 3
+    - cost.iron += 2
+  predecessors: [hydraLauncher]

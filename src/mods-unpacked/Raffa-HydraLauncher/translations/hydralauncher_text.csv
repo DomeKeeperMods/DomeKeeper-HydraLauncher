@@ -1,0 +1,27 @@
+keys,en
+upgrades.hydralauncher.title,Hydra Launcher
+upgrades.hydralauncher.desc,Launches multiple enemy-seeking missiles.
+upgrades.hydralaunchermaxprojectiles1.title,Missile Battery Extension 1
+upgrades.hydralaunchermaxprojectiles1.desc,Extends the capacity of Missile Salvo Batteries.
+upgrades.hydralaunchermaxprojectiles2.title,Missile Battery Extension 2
+upgrades.hydralaunchermaxprojectiles2.desc,Extends the capacity of Missile Salvo Batteries.
+upgrades.hydralaunchersalvosize.title,Salvo Amount
+upgrades.hydralaunchersalvosize.desc,Increases the amount of Missiles shot for each Missile Salvo Battery.
+upgrades.hydralauncherdamage1.title,Missile Damage 1
+upgrades.hydralauncherdamage1.desc,Increases the Damage of each Missile.
+upgrades.hydralauncherdamage2.title,Missile Damage 2
+upgrades.hydralauncherdamage2.desc,Increases the Damage of each Missile even further.
+upgrades.hydralauncherautotracker.title,Autotracker
+upgrades.hydralauncherautotracker.desc,Fires additional Missiles automatically at enemies while the Hydra Launcher is active.
+upgrades.hydralaunchertaserwarhead.title,Taser Missiles
+upgrades.hydralaunchertaserwarhead.desc,Missiles stun enemies but deal much less damage.
+upgrades.hydralauncherrecharge.title,Recharge Speed
+upgrades.hydralauncherrecharge.desc,Lowers the time needed for each Missile Salvo Battery to reload.
+properties.hydralauncher.maxprojectiles,Battery Capacity {}
+properties.hydralauncher.projectilesalvo,Missiles per Salvo {}
+properties.hydralauncher.damage,Damage per Missile {}
+properties.hydralauncher.autotracking,Autotracker enabled
+properties.hydralauncher.autotrackingreload,Autotracker Reload Time {}s
+properties.hydralauncher.taser,Stun Effect
+properties.hydralauncher.rechargetime,Recharge Speed {}s
+

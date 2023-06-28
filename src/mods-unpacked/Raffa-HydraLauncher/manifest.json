@@ -1,0 +1,17 @@
+{
+	"name": "HydraLauncher",
+	"namespace": "Raffa",
+	"version_number": "1.0.0",
+	"description": "Adds a Missile Launcher Gadget firing homing missiles at enemies.",
+	"website_url": "https://github.com/example/repo",
+	"dependencies": [],
+	"extra": {
+		"godot": {
+			"incompatibilities": [],
+			"authors": ["Raffaele Picca"],
+			"compatible_mod_loader_version": ["3.0.0"],
+			"compatible_game_version": ["0.6.1.6"],
+			"config_defaults": {}
+		}
+	}
+}

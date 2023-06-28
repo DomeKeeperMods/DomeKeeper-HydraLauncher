@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hydralauncher_shoot.wav-b41e5f202681cdf9f5f8ae6e56bd2f51.sample"
+
+[deps]
+
+source_file="res://mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/hydralauncher_shoot.wav"
+dest_files=[ "res://.import/hydralauncher_shoot.wav-b41e5f202681cdf9f5f8ae6e56bd2f51.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
