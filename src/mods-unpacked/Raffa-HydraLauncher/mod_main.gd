@@ -6,7 +6,7 @@ const DOME_UPGRADE_NAME = "hydralauncher"
 
 var dir = ""
 var ext_dir = ""
-var trans_dir = "translations/"
+var trans_dir = ""
 
 func _init(modLoader = ModLoader):
 	ModLoaderLog.info("Init", MYMODNAME_LOG)
