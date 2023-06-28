@@ -3,7 +3,7 @@
 	"namespace": "Raffa",
 	"version_number": "1.0.0",
 	"description": "Adds a Missile Launcher Gadget firing homing missiles at enemies.",
-	"website_url": "https://github.com/example/repo",
+	"website_url": "https://github.com/RPicster/DomeKeeperMod-HydraLauncher/",
 	"dependencies": [],
 	"extra": {
 		"godot": {
