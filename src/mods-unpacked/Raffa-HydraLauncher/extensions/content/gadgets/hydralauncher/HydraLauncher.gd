@@ -184,5 +184,4 @@ func getValidTargets():
 func getNewTarget():
 	if validTargets.empty():
 		return null
-	print(validTargets)
 	return validTargets[randi()%validTargets.size()]
