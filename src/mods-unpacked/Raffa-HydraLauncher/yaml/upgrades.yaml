@@ -1,4 +1,5 @@
 hydraLauncher:
+  type: gadget
   limit: [hostile]
   scene: mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/HydraLauncher.tscn
   slot: backside

@@ -8,7 +8,7 @@ var dir = ""
 var ext_dir = ""
 var trans_dir = ""
 
-func _init(modLoader = ModLoader):
+func _init():
 	ModLoaderLog.info("Init", MYMODNAME_LOG)
 	dir = ModLoaderMod.get_unpacked_dir() + MYMODNAME_MOD_DIR
 	ext_dir = dir + "extensions/"
@@ -20,15 +20,15 @@ func _init(modLoader = ModLoader):
 	# Add extensions
 #	ModLoaderMod.install_script_extension(ext_dir + "main.gd")
 
-
 func _ready():
 	ModLoaderLog.info("Done", MYMODNAME_LOG)
 	add_to_group("mod_init")
 
 func modInit():
-	var pathToModYaml : String = ModLoaderMod.get_unpacked_dir() + MYMODNAME_MOD_DIR + "yaml/"
-	Data.parseUpgradesYaml(pathToModYaml + "upgrades.yaml")
+	var pathToModYaml : String = "res://mods-unpacked/Raffa-HydraLauncher/yaml/upgrades.yaml"
 	GameWorld.unlockElement(DOME_UPGRADE_NAME)
+	ModLoaderLog.info("Trying to parse YAML: %s" % pathToModYaml, MYMODNAME_LOG)
+	Data.parseUpgradesYaml(pathToModYaml)
 	# This signal can be used to test the mod
 	#StageManager.connect("level_ready", self, "testMod")
 

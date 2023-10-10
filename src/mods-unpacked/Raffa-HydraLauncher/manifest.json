@@ -1,7 +1,7 @@
 {
 	"name": "HydraLauncher",
 	"namespace": "Raffa",
-	"version_number": "1.0.0",
+	"version_number": "1.0.2",
 	"description": "Adds a Missile Launcher Gadget firing homing missiles at enemies.",
 	"website_url": "https://github.com/RPicster/DomeKeeperMod-HydraLauncher/",
 	"dependencies": [],
@@ -10,7 +10,7 @@
 			"incompatibilities": [],
 			"authors": ["Raffaele Picca"],
 			"compatible_mod_loader_version": ["3.0.0"],
-			"compatible_game_version": ["0.6.1.6"],
+			"compatible_game_version": ["3.0"],
 			"config_defaults": {}
 		}
 	}
