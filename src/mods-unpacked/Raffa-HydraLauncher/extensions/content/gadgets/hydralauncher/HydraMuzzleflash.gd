@@ -2,8 +2,8 @@ extends Node2D
 
 func _ready():
 	Style.init($Sprite)
-	var newScale = Vector2(rand_range(1.1, 1.4), rand_range(1.1, 1.4)) * scale.x
-	$Tween.interpolate_property(self, "scale", Vector2.ZERO, newScale, 0.03, Tween.TRANS_EXPO, Tween.EASE_OUT)
-	$Tween.interpolate_property(self, "scale", newScale, Vector2.ZERO, 0.35, Tween.TRANS_QUINT, Tween.EASE_OUT, 0.03)
-	$Tween.interpolate_callback(self, 0.08, "queue_free")
-	$Tween.start()
+	var newScale = Vector2(randf_range(1.1, 1.4), randf_range(1.1, 1.4)) * scale.x
+	var t := create_tween()
+	t.tween_property(self, "scale", newScale, 0.03).from(Vector2.ZERO).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	t.tween_property(self, "scale", newScale*0.5, 0.15).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	t.tween_callback(queue_free)

@@ -2,13 +2,14 @@
 
 importer="csv_translation"
 type="Translation"
+uid="uid://dw3wclckxfad2"
 
 [deps]
 
-files=[ "res://mods-unpacked/Raffa-HydraLauncher/translations/hydralauncher_text.en.translation" ]
+files=["res://mods-unpacked/Raffa-HydraLauncher/translations/hydralauncher_text.en.translation"]
 
 source_file="res://mods-unpacked/Raffa-HydraLauncher/translations/hydralauncher_text.csv"
-dest_files=[ "res://mods-unpacked/Raffa-HydraLauncher/translations/hydralauncher_text.en.translation" ]
+dest_files=["res://mods-unpacked/Raffa-HydraLauncher/translations/hydralauncher_text.en.translation"]
 
 [params]
 

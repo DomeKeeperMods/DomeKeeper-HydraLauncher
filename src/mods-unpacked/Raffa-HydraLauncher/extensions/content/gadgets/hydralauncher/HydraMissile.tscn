@@ -1,82 +1,83 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=14 format=3 uid="uid://b273yh4dg8ppc"]
 
-[ext_resource path="res://mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/HydraMissile.gd" type="Script" id=1]
-[ext_resource path="res://systems/audio/Sound.gd" type="Script" id=2]
-[ext_resource path="res://content/sounds/Weapons/artillery/Explosion Thick 02.wav" type="AudioStream" id=3]
-[ext_resource path="res://content/sounds/Weapons/artillery/explosion_large_01.wav" type="AudioStream" id=4]
-[ext_resource path="res://content/sounds/Weapons/artillery/explosion_large_02.wav" type="AudioStream" id=5]
-[ext_resource path="res://content/sounds/Weapons/artillery/Explosion Thick 01.wav" type="AudioStream" id=6]
-[ext_resource path="res://content/sounds/Weapons/artillery/explosion_large_03.wav" type="AudioStream" id=7]
-[ext_resource path="res://content/sounds/Weapons/Sword/sword-move.ogg" type="AudioStream" id=8]
-[ext_resource path="res://mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/hydralauncher_muzzleflash.png" type="Texture" id=9]
-[ext_resource path="res://mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/hydralauncher_missile.png" type="Texture" id=10]
+[ext_resource type="Script" path="res://mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/HydraMissile.gd" id="1"]
+[ext_resource type="Script" path="res://systems/audio/Sound.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://dwwwmiguam1pv" path="res://mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/hydralauncher_missile.png" id="2_5g52j"]
+[ext_resource type="Texture2D" uid="uid://bxgw7n5are1op" path="res://mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/hydralauncher_muzzleflash.png" id="2_jxojv"]
+[ext_resource type="AudioStream" uid="uid://disjp4hftyyrm" path="res://content/sounds/Weapons/artillery/Explosion Thick 02.wav" id="3"]
+[ext_resource type="AudioStream" uid="uid://36bikj1bq48o" path="res://content/sounds/Weapons/artillery/explosion_large_01.wav" id="4"]
+[ext_resource type="AudioStream" uid="uid://005vm3tqsgt0" path="res://content/sounds/Weapons/artillery/explosion_large_02.wav" id="5"]
+[ext_resource type="AudioStream" uid="uid://b3xwn21jst16c" path="res://content/sounds/Weapons/artillery/Explosion Thick 01.wav" id="6"]
+[ext_resource type="AudioStream" uid="uid://bkp2w51fcuce4" path="res://content/sounds/Weapons/artillery/explosion_large_03.wav" id="7"]
+[ext_resource type="AudioStream" uid="uid://cn4et8iwt3nt4" path="res://content/sounds/Weapons/Sword/sword-move.ogg" id="8"]
 
-[sub_resource type="OpenSimplexNoise" id=2]
+[sub_resource type="FastNoiseLite" id="2"]
+frequency = 0.0165
+fractal_octaves = 3
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id="1"]
 radius = 6.0
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id="3"]
 radius = 12.0
 
 [node name="HydraMissile" type="Area2D"]
 z_index = 20
 collision_layer = 0
 collision_mask = 131200
-script = ExtResource( 1 )
-noise = SubResource( 2 )
+script = ExtResource("1")
+noise = SubResource("2")
 
-[node name="Flash" type="Sprite" parent="."]
-position = Vector2( -2, -4.3201e-12 )
+[node name="Flash" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-2, -4.3201e-12)
 rotation = -1.57079
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 9 )
-offset = Vector2( 0, -17.704 )
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_jxojv")
+offset = Vector2(0, -17.704)
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1, 0.5 )
-texture = ExtResource( 10 )
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_5g52j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1")
 disabled = true
-
-[node name="Tween" type="Tween" parent="."]
 
 [node name="ExplosionArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
-shape = SubResource( 3 )
+shape = SubResource("3")
 
 [node name="Impact" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource("4")
 volume_db = -9.0
 pitch_scale = 1.4
-bus = "Sounds"
-script = ExtResource( 2 )
+bus = &"Sounds"
+script = ExtResource("2")
 randomVolume = 0.5
 randomPitch = 0.2
 maxAudibleDistance = 500.0
 minAudibleDistance = 200.0
-streams = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ) ]
+streams = Array[AudioStream]([ExtResource("4"), ExtResource("5"), ExtResource("7")])
 
 [node name="Echo" type="AudioStreamPlayer" parent="Impact"]
-stream = ExtResource( 6 )
+stream = ExtResource("6")
 volume_db = -17.0
-bus = "Sounds"
-script = ExtResource( 2 )
+bus = &"Sounds"
+script = ExtResource("2")
 randomVolume = 0.1
-streams = [ ExtResource( 3 ), ExtResource( 6 ) ]
+streams = Array[AudioStream]([ExtResource("3"), ExtResource("6")])
 
 [node name="Fizz" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource("8")
 volume_db = -8.0
 pitch_scale = 3.0
 autoplay = true
 max_distance = 100.0
-bus = "Sounds"
+bus = &"Sounds"
 
 [connection signal="area_entered" from="." to="." method="_on_HydraMissile_area_entered"]
 [connection signal="finished" from="Impact" to="." method="_on_Impact_finished"]

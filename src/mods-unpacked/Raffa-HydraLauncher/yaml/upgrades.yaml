@@ -1,9 +1,9 @@
 hydraLauncher:
   type: gadget
   limit: [hostile]
-  scene: mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/HydraLauncher.tscn
-  slot: backside
-  distribution: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+  scenes: 
+    domebackside: mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/HydraLauncher.tscn
+  takeslots: [domebackside]
   propertyChanges:
     - hydraLauncher.projectiles = 0/h
     - hydraLauncher.maxProjectiles = 2

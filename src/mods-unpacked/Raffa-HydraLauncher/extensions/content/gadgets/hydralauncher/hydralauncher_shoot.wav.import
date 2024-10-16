@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/hydralauncher_shoot.wav-b41e5f202681cdf9f5f8ae6e56bd2f51.sample"
+type="AudioStreamWAV"
+uid="uid://dro3nnl6m3sbl"
+path="res://.godot/imported/hydralauncher_shoot.wav-b41e5f202681cdf9f5f8ae6e56bd2f51.sample"
 
 [deps]
 
 source_file="res://mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/hydralauncher_shoot.wav"
-dest_files=[ "res://.import/hydralauncher_shoot.wav-b41e5f202681cdf9f5f8ae6e56bd2f51.sample" ]
+dest_files=["res://.godot/imported/hydralauncher_shoot.wav-b41e5f202681cdf9f5f8ae6e56bd2f51.sample"]
 
 [params]
 

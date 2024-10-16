@@ -15,10 +15,11 @@ var fired := 0
 var autotrackerReload := 0.0
 var autotrackerReloadTime := 1.2
 var validTargets := []
+var tween : Tween
 
-onready var reloadProgress = $Visuals/Base/ReloadProgress
-onready var ammo = [$Visuals/Ammo1, $Visuals/Ammo2, $Visuals/Ammo3, $Visuals/Ammo4]
-onready var ammoLamps = [$Visuals/Ammo1/Lamp, $Visuals/Ammo2/Lamp, $Visuals/Ammo3/Lamp, $Visuals/Ammo4/Lamp]
+@onready var reloadProgress = $Visuals/Base/ReloadProgress
+@onready var ammo = [$Visuals/Ammo1, $Visuals/Ammo2, $Visuals/Ammo3, $Visuals/Ammo4]
+@onready var ammoLamps = [$Visuals/Ammo1/Lamp, $Visuals/Ammo2/Lamp, $Visuals/Ammo3/Lamp, $Visuals/Ammo4/Lamp]
 
 # This Mod example handles adding a new Gadget that charges up missiles (charge speed upgradeable)
 # The player can then shoot missiles during waves
@@ -68,10 +69,10 @@ func _physics_process(delta):
 		return
 	
 	if isActive:
-		if not Data.of("keeper.insidestation"):
+		if not Keepers.oneInsideStation():
 			deactivate()
 	else:
-		if Data.of("keeper.insidestation"):
+		if Keepers.oneInsideStation():
 			activate()
 	
 	getValidTargets()
@@ -104,19 +105,18 @@ func handleReloading(delta):
 func changeAmmo():
 	if not projectiles >= maxProjectiles and rechargeTime <= 0.0:
 		rechargeTime = maxRechargeTime
-	
+	var recharge_tween := create_tween()
 	var ammoId := 0
 	for al in ammo:
 		if ammoId >= projectiles:
 			ammoLamps[ammoId].hide()
 			var newPos = 3 if al.is_in_group("hydraAmmoLeft") else -3
 			if abs(al.position.x) <= abs(newPos):
-				$Tween.interpolate_property(al, "position:x", al.position.x, newPos, 0.4, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
+				recharge_tween.tween_property(al, "position:x", newPos, 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 		else:
 			ammoLamps[ammoId].show()
 			if abs(al.position.x) > 0:
-				$Tween.interpolate_property(al, "position:x", al.position.x, 0, 0.4, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
-		$Tween.start()
+				recharge_tween.tween_property(al, "position:x", 0.0, 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 		ammoId += 1
 
 func shoot():
@@ -128,12 +128,17 @@ func getBattleAbilityName() -> String:
 	return tr("upgrades.hydralauncher.title")
 
 func vfxActivation():
-	$Tween.interpolate_property($Visuals/Top, "position:y", $Visuals/Top.position.y, -9, 1.1, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
-	$Tween.start()
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property($Visuals/Top, "position:y", -9, 1.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+
 
 func vfxDeactivation():
-	$Tween.interpolate_property($Visuals/Top, "position:y", $Visuals/Top.position.y, 0, 1.1, Tween.TRANS_BOUNCE, Tween.EASE_OUT, 0.2)
-	$Tween.start()
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property($Visuals/Top, "position:y", 0, 1.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE).set_delay(0.2)
 
 
 func _on_ShootTimer_timeout():
@@ -142,12 +147,12 @@ func _on_ShootTimer_timeout():
 func shootMissile(useSalvo:=true):
 	var angle = INITIAL_ANGLES[wrapi(fired, 0, 3)]
 	
-	var newMuzzleflash = preload("res://mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/HydraMuzzleflash.tscn").instance()
-	newMuzzleflash.position = $"%LaunchPos".global_position
+	var newMuzzleflash = preload("res://mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/HydraMuzzleflash.tscn").instantiate()
 	newMuzzleflash.rotation = $"%LaunchPos".rotation + angle
-	Level.map.add_child(newMuzzleflash)
+	$Visuals/Top.add_child(newMuzzleflash)
+	newMuzzleflash.global_position = $"%LaunchPos".global_position
 	
-	var newMissile = preload("res://mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/HydraMissile.tscn").instance()
+	var newMissile = preload("res://mods-unpacked/Raffa-HydraLauncher/extensions/content/gadgets/hydralauncher/HydraMissile.tscn").instantiate()
 	newMissile.launcher = self
 	newMissile.position = $"%LaunchPos".global_position
 	newMissile.rotation = $"%LaunchPos".rotation + angle
@@ -182,6 +187,6 @@ func getValidTargets():
 			validTargets.append(m)
 
 func getNewTarget():
-	if validTargets.empty():
+	if validTargets.is_empty():
 		return null
 	return validTargets[randi()%validTargets.size()]
